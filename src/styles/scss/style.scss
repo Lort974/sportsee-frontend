@@ -1,1 +1,25 @@
-@import "libs/index.scss"
+$dark: #020203;
+$white: #ffffff;
+$black: #000000;
+$orange: #ff0101;
+
+$breakpoint-second: 1090px;
+$breakpoint-first: 1240px;
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == first {
+        @media screen and (max-width: $breakpoint-first) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == second {
+        @media screen and (max-width: $breakpoint-second) {
+            @content;
+        }
+    }
+}
+
+@import "libs/index.scss";
+@import "libs/header.scss";
+@import "libs/footer.scss";
+@import "libs/home.scss";

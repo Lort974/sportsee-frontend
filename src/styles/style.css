@@ -1,12 +1,240 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  margin: auto;
+  color: #000000;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+header {
+  height: 91px;
+  width: 100%;
+  background-color: #020203;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 91px 0 28px;
+  color: #ffffff;
+  gap: 149px;
+  position: fixed;
+  z-index: 2;
+  box-sizing: border-box;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  width: 178px;
+}
+.logo .logo__pic {
+  width: 178px;
+}
+
+.header__nav {
+  max-width: 994px;
+  width: 100%;
+  font-size: 24px;
+}
+.header__nav .header__nav__menu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: unset;
+  margin: unset;
+}
+
+footer {
+  width: 117px;
+  height: 100%;
+  background-color: #020203;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  color: #ffffff;
+  top: 0;
+  padding-bottom: 127px;
+  z-index: 1;
+}
+
+.copyright {
+  font-size: 12px;
+  transform: rotate(270deg);
+  width: 136px;
+}
+
+.footer__nav {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+.footer__nav .footer__nav__menu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  padding: unset;
+  margin: unset;
+}
+
+.tooltip {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 2px 8px;
+  border: none;
+}
+.dashboard {
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 159px 90px 89px 224px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dashboard .dashboard__header {
+  width: 100%;
+  height: 89px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.dashboard .dashboard__header .dashboard__header__title {
+  font-size: 48px;
+}
+.dashboard .dashboard__header .dashboard__header__title .dashboard__header__title--hello {
+  color: #000000;
+}
+.dashboard .dashboard__header .dashboard__header__title .dashboard__header__title--name {
+  color: #ff0101;
+}
+.dashboard .dashboard__body {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 30px;
+}
+.dashboard .dashboard__body .dashboard__body__charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth {
+  background-color: #FBFBFB;
+  height: 320px;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .dashboard__body__charts__weigth__legend {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: flex-end;
+  margin-top: -25px;
+}
+@media screen and (max-width: 1090px) {
+  .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .dashboard__body__charts__weigth__legend {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+    margin-top: -35px;
+  }
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .dashboard__body__charts__weigth__legend .dashboard__body__charts__weigth__legend__color {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .dashboard__body__charts__weigth__legend .dashboard__body__charts__weigth__legend__color span:first-child {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .dashboard__body__charts__weigth__legend .dashboard__body__charts__weigth__legend__color span:last-child {
+  font-size: 14px;
+  color: #74798C;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .tooltip {
+  background-color: #E60000;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .tooltip .tooltip__text {
+  color: #FFFFFF;
+  font-size: 7px;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity {
+  background-color: #FBFBFB;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+@media screen and (max-width: 1240px) {
+  .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 1090px) {
+  .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity {
+    grid-template-columns: 1fr;
+  }
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt {
+  border-radius: 5px;
+  height: 245px;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt .tooltip {
+  background-color: #FFFFFF;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt .tooltip .tooltip__text {
+  color: #000000;
+  font-size: 8px;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt--session-time {
+  background-color: #FF0000;
+}
+.dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt--performance {
+  background-color: #282D30;
+}
+.dashboard .dashboard__body .dashboard__body__nutrition {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 124px 124px 124px 124px;
+  grid-gap: 30px;
+}
+.dashboard .dashboard__body .dashboard__body__nutrition .dashboard__body__nutrition__elt {
+  display: flex;
+  padding: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  background-color: #FBFBFB;
+}
+.dashboard .dashboard__body .dashboard__body__nutrition .dashboard__body__nutrition__elt .dashboard__body__nutrition__elt__pic {
+  width: 60px;
+}
+.dashboard .dashboard__body .dashboard__body__nutrition .dashboard__body__nutrition__elt .dashboard__body__nutrition__elt__details .dashboard__body__nutrition__elt__details__details {
+  font-size: 14px;
+}
+.dashboard .dashboard__body .dashboard__body__nutrition .dashboard__body__nutrition__elt .dashboard__body__nutrition__elt__details .dashboard__body__nutrition__elt__details__value {
+  font-weight: 700;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
