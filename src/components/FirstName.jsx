@@ -1,12 +1,12 @@
-import { useMainData } from '../components/Fetch'
-
+import { useUserData } from '../components/Fetch'
+import Model from '../services/model'
 
 export const FirstName = ({userId}) => {
-    const data = useMainData(userId)
+    const data = useUserData(userId, "")
 
     let firstName
     if (data && data.data && data.data.userInfos) {
-        firstName = data.data.userInfos.firstName
+        firstName = Model(data, "firstName")
     }
     else {
         firstName = "..."

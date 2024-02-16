@@ -1,9 +1,15 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useAverageSessions } from './Fetch'
+import { useUserData } from './Fetch'
+import Model from '../services/model'
 
 export const SessionLengthCard = ({userId}) => {
-  const data = useAverageSessions(userId)
+  const data = useUserData(userId, "average-sessions")
+
+  let averageSessions
+  if (data && data.data && data.data.sessions) {
+    averageSessions = Model(data, "averageSessionsCard")
+  }
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -42,7 +48,7 @@ export const SessionLengthCard = ({userId}) => {
     <LineChart
       /*width={500}
       height={300}*/
-      data={data}
+      data={averageSessions}
       margin={{
         top: 45,
         right: 20,

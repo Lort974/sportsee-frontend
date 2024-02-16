@@ -1,5 +1,14 @@
-export const fetchUserMainData = async (userId) => {
-    const response = await fetch(`http://localhost:3000/user/${userId}`)
+export const fetchUserData = async (userId, dataType) => {
+    const response = await fetch(`http://localhost:3000/user/${userId}/${dataType}`)
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const userData = await response.json()
+    return userData
+}
+
+/*export const fetchUserMainData = async (userId) => {
+    const response = await fetch(`http://localhost:3000/user/${userId}/`)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -13,7 +22,7 @@ export const fetchUserActivity = async (userId) => {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
     const activity = await response.json()
-    return activity.data.sessions
+    return activity
 }
 
 export const fetchUserAverageSessions = async (userId) => {
@@ -22,7 +31,7 @@ export const fetchUserAverageSessions = async (userId) => {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
     const averageSessions = await response.json()
-    return averageSessions.data.sessions
+    return averageSessions
 }
 
 export const fetchUserPerformance = async (userId) => {
@@ -32,19 +41,5 @@ export const fetchUserPerformance = async (userId) => {
     }
     const performance = await response.json()
     
-    const FRENCH_TRANSLATIONS = {
-        'cardio': 'Cardio',
-        'energy': 'Energie',
-        'endurance': 'Endurance',
-        'strength': 'Force',
-        'speed': 'Vitesse',
-        'intensity': 'Intensité'
-    }
-
-    const dataWithKindNames = performance.data.data.map(item => ({
-        ...item,
-        kind: FRENCH_TRANSLATIONS[performance.data.kind[item.kind]]
-    }));
-
-    return dataWithKindNames;
-}
+    return performance;
+}*/

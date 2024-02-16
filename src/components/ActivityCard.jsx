@@ -1,11 +1,26 @@
 import React from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
-import { useActivity } from './Fetch'
-
-
+import { useUserData } from './Fetch'
+import Model from '../services/model'
 
 export const ActivityCard = ({userId}) => {
-    const data = useActivity(userId);
+    const data = useUserData(userId, "activity");
+
+    let activity
+
+    if (data && data.data && data.data.sessions) {
+        activity = Model(data, "activityCard")
+    }
+
+    const ticks = [];
+    
+    if (activity) {
+        const dataMin = Math.min(...activity.map(item => item.kilogram));
+        const dataMax = Math.max(...activity.map(item => item.kilogram));
+        for (let i = dataMin; i <= dataMax; i++) {
+            ticks.push(i);
+        }
+    }
 
     const renderLegend = (props) => {
         const { payload } = props;
@@ -23,14 +38,7 @@ export const ActivityCard = ({userId}) => {
             </div>
         )
     }
-
-    const dataMin = Math.min(...data.map(item => item.kilogram));
-    const dataMax = Math.max(...data.map(item => item.kilogram));
-    const ticks = [];
-    for (let i = dataMin; i <= dataMax; i++) {
-        ticks.push(i);
-    }
-
+    
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return (
@@ -48,7 +56,7 @@ export const ActivityCard = ({userId}) => {
         <BarChart
             /*width={500}
             height={300}*/
-            data={data}
+            data={activity}
             margin={{
             top: 45,
             right: 20,

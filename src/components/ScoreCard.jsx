@@ -1,26 +1,14 @@
 import React from 'react';
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
-import { useMainData } from '../components/Fetch'
-
+import { useUserData } from '../components/Fetch'
+import Model from '../services/model'
 
 export const ScoreCard = ({userId}) => {
-    const data = useMainData(userId)
+    const data = useUserData(userId, "")
 
     let score
     if (data && data.data && data.data.todayScore) {
-        score = [
-            {
-              name: "Score",
-              value: data.data.todayScore * 100,
-              fill: '#FF0000',
-            },
-            {
-              name: "Max",
-              value: 100,
-              fill: '#000000',
-              fillOpacity: 0,
-            },
-        ];
+        score = Model(data, "scoreCard")
     }
     return <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart cx="50%" cy="50%" innerRadius="75%" outerRadius="100%" barSize={10} data={score}>

@@ -2,15 +2,15 @@ import caloriesIcon from "../assets/calories-icon.svg"
 import proteinIcon from "../assets/protein-icon.svg"
 import carbsIcon from "../assets/carbs-icon.svg"
 import fatIcon from "../assets/fat-icon.svg"
-import { useMainData } from '../components/Fetch'
+import { useUserData } from '../components/Fetch'
+import Model from '../services/model'
 
 const NutritionCard = ({userId, category}) => {
-    const data = useMainData(userId)
+    const data = useUserData(userId, "")
     let value = 0
 
     if (data && data.data && data.data.keyData) {
-        value = data.data.keyData[category]
-        value = value > 999 ? value.toLocaleString("en-US") : value
+        value = Model(data, "nutritionCard", category)
     }
 
     let icon = ""
