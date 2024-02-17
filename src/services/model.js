@@ -3,18 +3,18 @@ const Model = (data, type, category) => {
     switch (type) {
         case "scoreCard":
             model = [
-                {
-                  name: "Score",
-                  value: data.data.todayScore * 100,
-                  fill: '#FF0000',
-                },
-                {
-                  name: "Max",
-                  value: 100,
-                  fill: '#000000',
-                  fillOpacity: 0,
-                },
-            ]
+                    {
+                    name: "Score",
+                    value: (data.data.todayScore ? data.data.todayScore : data.data.score) * 100,
+                    fill: '#FF0000',
+                    },
+                    {
+                    name: "Max",
+                    value: 100,
+                    fill: '#000000',
+                    fillOpacity: 0,
+                    },
+                ]
             break
         case "firstName":
             model = data.data.userInfos.firstName
