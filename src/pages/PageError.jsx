@@ -1,17 +1,14 @@
-import { useRouteError, NavLink } from "react-router-dom/dist"
-
 const PageError = () => {
-    const error = useRouteError()
-
     return <>
-        <div>
-            <div className="pageError__title">
-                404
+        <div className="dashboard">
+            <div className="dashboard__header">
+                <div className="dashboard__header__title">
+                    <span className="dashboard__header__title--hello">Chargement...</span>
+                </div>
+                <div className="dashboard__header__baseline">
+                    Si rien ne se passe, le service est peut-être indisponible. Réessayez plus tard.
+                </div>
             </div>
-            <div>
-                "Oups! La page que vous demandez n'existe pas."
-            </div>
-            <NavLink to="/">Retourner sur la page d'accueil</NavLink>
         </div>
     </>
 }
