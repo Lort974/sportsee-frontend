@@ -4,8 +4,44 @@ import AverageSessionsCard from "../components/AverageSessionsCard"
 import PerformanceCard from "../components/PerformanceCard"
 import ScoreCard from "../components/ScoreCard"
 import FirstName from "../components/FirstName"
+import { useParams } from "react-router-dom"
+import PageError from "./PageError"
+import { useUserData } from "../components/Fetch"
 
 const Home = ({userId}) => {
+    const { data: userData, loading, error } = useUserData(userId, "");
+
+    if (loading) {
+        return <div className="dashboard">
+            <div className="dashboard__header">
+                <div className="dashboard__header__title">
+                    <span className="dashboard__header__title--hello">Chargement </span>
+                    <span className="dashboard__header__title--name">...</span>
+                </div>
+                <div className="dashboard__header__baseline">
+                    Merci de patienter
+                </div>
+            </div>
+        </div>
+    }
+
+    if (error) {
+        return <div className="dashboard">
+            <div className="dashboard__header">
+                <div className="dashboard__header__title">
+                    <span className="dashboard__header__title--hello">Une erreur s'est produite : </span>
+                </div>
+                <div className="dashboard__header__baseline">
+                    {error.message ? error.message : "Utilisateur introuvable"}
+                </div>
+            </div>
+        </div>
+    }
+
+    if (!userData) {
+        return <PageError />
+    }
+
     return <>
         <div className="dashboard">
             <div className="dashboard__header">

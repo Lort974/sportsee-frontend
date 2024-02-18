@@ -9,7 +9,7 @@ const NutritionCard = ({userId, category}) => {
     const data = useUserData(userId, "")
     let value = 0
 
-    if (data && data.data && data.data.keyData) {
+    if (data && data.data && data.data.data && data.data.data.keyData) {
         value = Model(data, "nutritionCard", category)
     }
 

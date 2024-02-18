@@ -5,7 +5,7 @@ const Model = (data, type, category) => {
             model = [
                     {
                     name: "Score",
-                    value: (data.data.todayScore ? data.data.todayScore : data.data.score) * 100,
+                    value: (data.data.data.todayScore ? data.data.data.todayScore : data.data.data.score) * 100,
                     fill: '#FF0000',
                     },
                     {
@@ -17,17 +17,17 @@ const Model = (data, type, category) => {
                 ]
             break
         case "firstName":
-            model = data.data.userInfos.firstName
+            model = data.data.data.userInfos.firstName
             break
         case "nutritionCard":
-            model = data.data.keyData[category]
+            model = data.data.data.keyData[category]
             model = model > 999 ? model.toLocaleString("en-US") : model
             break
         case "activityCard":
-        model = data.data.sessions
+        model = data.data.data.sessions
             break
         case "averageSessionsCard":
-            model = data.data.sessions
+            model = data.data.data.sessions
             break
         case "performanceCard":
             const FRENCH_TRANSLATIONS = {
@@ -38,9 +38,9 @@ const Model = (data, type, category) => {
                 'speed': 'Vitesse',
                 'intensity': 'Intensité'
             }
-            model = data.data.data.map(item => ({
+            model = data.data.data.data.map(item => ({
                 ...item,
-                kind: FRENCH_TRANSLATIONS[data.data.kind[item.kind]]
+                kind: FRENCH_TRANSLATIONS[data.data.data.kind[item.kind]]
             }));
     }
 

@@ -17,12 +17,6 @@ function App() {
     })
   })
 
-  const userData = useUserData(12, "")
-
-  if (userData.length === 0) {
-    return <><Header /><PageError /><Footer /></>
-  }
-
   return <>
     <RouterProvider router={router}/>
   </>

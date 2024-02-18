@@ -7,7 +7,7 @@ export const ScoreCard = ({userId}) => {
     const data = useUserData(userId, "")
 
     let score
-    if (data && data.data && (data.data.todayScore || data.data.score)) {
+    if (data && data.data && data.data.data && (data.data.data.todayScore || data.data.data.score)) {
         score = Model(data, "scoreCard")
     }
     return <ResponsiveContainer width="100%" height="100%">

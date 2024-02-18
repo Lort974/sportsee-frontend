@@ -8,7 +8,7 @@ export const ActivityCard = ({userId}) => {
 
     let activity
 
-    if (data && data.data && data.data.sessions) {
+    if (data && data.data && data.data.data && data.data.data.sessions) {
         activity = Model(data, "activityCard")
     }
 

@@ -7,7 +7,7 @@ export const SessionLengthCard = ({userId}) => {
   const data = useUserData(userId, "average-sessions")
 
   let averageSessions
-  if (data && data.data && data.data.sessions) {
+  if (data && data.data && data.data.data && data.data.data.sessions) {
     averageSessions = Model(data, "averageSessionsCard")
   }
 
