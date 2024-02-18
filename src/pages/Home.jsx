@@ -1,3 +1,4 @@
+// Importez les composants et les hooks nécessaires
 import NutritionCard from "../components/NutritionCard"
 import ActivityCard from "../components/ActivityCard"
 import AverageSessionsCard from "../components/AverageSessionsCard"
@@ -8,9 +9,12 @@ import { useParams } from "react-router-dom"
 import PageError from "./PageError"
 import { useUserData } from "../components/Fetch"
 
+// Ce composant affiche la page d'accueil pour un utilisateur spécifique
 const Home = ({userId}) => {
+    // Utilisez le hook personnalisé useUserData pour récupérer les données de l'utilisateur
     const { data: userData, loading, error } = useUserData(userId, "");
 
+    // Si les données sont en cours de chargement, affichez un message de chargement
     if (loading) {
         return <div className="dashboard">
             <div className="dashboard__header">
@@ -25,6 +29,7 @@ const Home = ({userId}) => {
         </div>
     }
 
+    // Si une erreur s'est produite, affichez un message d'erreur
     if (error) {
         return <div className="dashboard">
             <div className="dashboard__header">
@@ -38,10 +43,12 @@ const Home = ({userId}) => {
         </div>
     }
 
+    // Si les données de l'utilisateur n'existent pas, affichez une page d'erreur
     if (!userData) {
         return <PageError />
     }
 
+    // Sinon, affichez la page d'accueil avec les données de l'utilisateur
     return <>
         <div className="dashboard">
             <div className="dashboard__header">
@@ -81,4 +88,5 @@ const Home = ({userId}) => {
     </>
 }
 
+// Exportez Home comme composant par défaut
 export default Home

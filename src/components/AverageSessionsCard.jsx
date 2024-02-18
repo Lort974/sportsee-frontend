@@ -1,16 +1,22 @@
+// Importez les composants et les hooks nécessaires
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { useUserData } from './Fetch'
 import Model from '../services/model'
 
+// Ce composant affiche une carte de la durée des sessions pour un utilisateur spécifique
 export const SessionLengthCard = ({userId}) => {
+  // Utilisez le hook personnalisé useUserData pour récupérer les données de l'utilisateur
   const data = useUserData(userId, "average-sessions")
 
   let averageSessions
+  // Vérifiez si les données existent et sont bien structurées
   if (data && data.data && data.data.data && data.data.data.sessions) {
+    // Si c'est le cas, utilisez la fonction Model pour transformer les données en un format approprié pour la carte de la durée des sessions
     averageSessions = Model(data, "averageSessionsCard")
   }
 
+  // Ce composant est utilisé pour personnaliser l'infobulle du graphique
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
@@ -23,6 +29,7 @@ export const SessionLengthCard = ({userId}) => {
     return null;
   }
 
+  // Cette fonction est utilisée pour formater les étiquettes de l'axe des x
   const formatXAxis = (tickItem) => {
     switch(tickItem) {
       case 1:
@@ -44,10 +51,9 @@ export const SessionLengthCard = ({userId}) => {
     }
   }
 
+  // Renvoie un graphique linéaire à l'intérieur d'un conteneur réactif
   return <ResponsiveContainer width="100%" height="100%">
     <LineChart
-      /*width={500}
-      height={300}*/
       data={averageSessions}
       margin={{
         top: 45,
@@ -91,4 +97,5 @@ export const SessionLengthCard = ({userId}) => {
   </ResponsiveContainer>
 }
 
+// Exportez SessionLengthCard comme composant par défaut
 export default SessionLengthCard

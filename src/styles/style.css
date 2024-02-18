@@ -97,7 +97,6 @@ footer {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
   padding: 2px 8px;
   border: none;
 }
@@ -177,7 +176,7 @@ footer {
 }
 .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__weigth .tooltip .tooltip__text {
   color: #FFFFFF;
-  font-size: 7px;
+  font-size: 14px;
 }
 .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity {
   background-color: #FBFBFB;
@@ -204,7 +203,7 @@ footer {
 }
 .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt .tooltip .tooltip__text {
   color: #000000;
-  font-size: 8px;
+  font-size: 14px;
 }
 .dashboard .dashboard__body .dashboard__body__charts .dashboard__body__charts__activity .dashboard__body__charts__activity__elt--session-time {
   background-color: #FF0000;

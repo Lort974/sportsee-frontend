@@ -1,17 +1,23 @@
+// Importez les composants et les hooks nécessaires
 import React from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 import { useUserData } from './Fetch'
 import Model from '../services/model'
 
+// Ce composant affiche une carte d'activité pour un utilisateur spécifique
 export const ActivityCard = ({userId}) => {
+    // Utilisez le hook personnalisé useUserData pour récupérer les données de l'utilisateur
     const data = useUserData(userId, "activity");
 
     let activity
 
+    // Vérifiez si les données existent et sont bien structurées
     if (data && data.data && data.data.data && data.data.data.sessions) {
+        // Si c'est le cas, utilisez la fonction Model pour transformer les données en un format approprié pour la carte d'activité
         activity = Model(data, "activityCard")
     }
 
+    // Préparez les graduations pour l'axe des y
     const ticks = [];
     
     if (activity) {
@@ -22,6 +28,7 @@ export const ActivityCard = ({userId}) => {
         }
     }
 
+    // Ce composant est utilisé pour personnaliser la légende du graphique
     const renderLegend = (props) => {
         const { payload } = props;
 
@@ -39,6 +46,7 @@ export const ActivityCard = ({userId}) => {
         )
     }
     
+    // Ce composant est utilisé pour personnaliser l'infobulle du graphique
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return (
@@ -52,10 +60,9 @@ export const ActivityCard = ({userId}) => {
         return null;
     };
 
+    // Renvoie un graphique à barres à l'intérieur d'un conteneur réactif
     return <ResponsiveContainer width="100%" height="100%">
         <BarChart
-            /*width={500}
-            height={300}*/
             data={activity}
             margin={{
             top: 45,
@@ -95,4 +102,5 @@ export const ActivityCard = ({userId}) => {
     </ResponsiveContainer>
 }
 
+// Exportez ActivityCard comme composant par défaut
 export default ActivityCard
